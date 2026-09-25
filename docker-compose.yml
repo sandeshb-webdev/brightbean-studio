@@ -13,19 +13,20 @@ services:
     restart: "no"
 
   app:
-    build: .
-    volumes:
-      - /mnt/storage/brightbean-media:/app/media
-    environment:
-      DJANGO_SETTINGS_MODULE: config.settings.production
-    ports:
-      - "8095:8000"
-    env_file:
-      - .env
-    depends_on:
-      migrate:
-        condition: service_completed_successfully
-    restart: unless-stopped
+  build: .
+  volumes:
+    - '/mnt/storage/brightbean-media:/app/media'
+  environment:
+    DJANGO_SETTINGS_MODULE: config.settings.production
+    SERVICE_FQDN_APP_8000: social.deotal.in
+  ports:
+    - '8095:8000'
+  env_file:
+    - .env
+  depends_on:
+    migrate:
+      condition: service_completed_successfully
+  restart: unless-stopped
 
   worker:
     build: .
