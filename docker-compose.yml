@@ -18,7 +18,6 @@ services:
       - '/mnt/storage/brightbean-media:/app/media'
     environment:
       DJANGO_SETTINGS_MODULE: config.settings.production
-      SERVICE_FQDN_APP_8000: social.deotal.in
     ports:
       - '8095:8000'
     env_file:
